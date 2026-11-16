@@ -5,5 +5,5 @@ def get_band_name(name):
         return "Please input a proper band name."
 
 bandName = ""
-while get_band_name() == "Please input a proper band name.":
+while get_band_name(bandName) == "Please input a proper band name.":
     bandName = input("Enter band name: ")
