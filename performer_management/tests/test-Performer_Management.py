@@ -1,5 +1,5 @@
 import pytest
-from Performer_Management import get_band_name
+from app.Performer_Management import get_band_name
 
 def test_good_name():
     assert get_band_name("Slipknot") == "Hello Slipknot."
