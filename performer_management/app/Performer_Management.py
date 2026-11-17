@@ -1,9 +1,17 @@
-def get_band_name(name):
-    if len(name) > 3 and len(name) < 20:
-        return "Hello " + name + "."
-    else:
-        return "Please input a proper band name."
+def get_performer_amount(amount):
+    try:
+        int(amount)
+    except ValueError:
+        return "invalid"
 
-bandName = ""
-while get_band_name(bandName) == "Please input a proper band name.":
-    bandName = input("Enter band name: ")
+    if int(amount) <= 0:
+        return "invalid"
+    
+    else:
+        return "valid"
+
+amount = input("Please input the amount of performers there will be: ")
+while get_performer_amount(amount) == "invalid":
+    amount = input("Please input the amount of performers there will be: ")
+
+print("Success")

@@ -1,11 +1,11 @@
 import pytest
-from app.Performer_Management import get_band_name
+from app.Performer_Management import get_performer_amount
 
-def test_good_name():
-    assert get_band_name("Slipknot") == "Hello Slipknot."
-
-def test_short_name():
-    assert get_band_name("D") ==  "Please input a proper band name."
-
-def test_long_name():
-    assert get_band_name("qwertyuiopasdfghjklzxcvbnm") == "Please input a proper band name."
+def test_get_performer_amount_zero():
+    assert get_performer_amount(0) == "invalid"
+    
+def test_get_performer_amount_erroneous():
+    assert get_performer_amount("No") == "invalid"
+    
+def test_get_performer_amount_valid():
+    assert get_performer_amount(5) == "valid"
