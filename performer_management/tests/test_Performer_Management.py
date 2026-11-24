@@ -1,4 +1,4 @@
-from app.Performer_Management import get_performers
+from app.Performer_Management import get_performers, contact_details
 from unittest.mock import patch
 import pytest
 
@@ -84,3 +84,29 @@ def test_duplicate_accept_uppercase():
 
     assert len(result) == 2
     assert result["Macauley"] == "Lead Guitar"
+    
+    
+    
+    
+def test_contact_details():
+    Performer_inputs = [
+        "Alex", "Guitar",
+        "John", "Bass",
+        "stop"
+    ]
+    
+    Contact_inputs = [
+        "44773812852",
+        "44783017693"
+    ]
+    
+    with patch("builtins.input", side_effect = Performer_inputs):
+        performer_results = get_performers()
+        
+    with patch("builtins.input", side_effect = Contact_inputs):
+        contact_results = contact_details()
+        
+    assert contact_results == {
+        "Alex": "44773812852",
+        "John": "44783017693"
+    }
