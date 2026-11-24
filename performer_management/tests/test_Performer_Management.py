@@ -110,3 +110,27 @@ def test_contact_details():
         "Alex": "44773812852",
         "John": "44783017693"
     }
+    
+def test_contact_details_dupe_ignored():
+    performerInputs = [
+        "Alex", "Bass",
+        "John", "Drums",
+        "Jimmy", "Drums", "n",
+        "stop"
+    ]
+    
+    contactInputs = [
+        "07783292800",
+        "07798217462"
+    ]
+    
+    with patch("builtins.input", side_effect = performerInputs):
+        performerResults = get_performers()
+    
+    with patch("builtins.input", side_effect = contactInputs):
+        contactResults = contact_details()
+        
+    assert contactResults == {
+        "Alex": "07783292800",
+        "John": "07798217462"
+    }
